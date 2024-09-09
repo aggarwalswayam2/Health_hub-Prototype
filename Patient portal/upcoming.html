@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Appointments</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: #ff6600;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .appointments-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+            overflow-x: auto;
+        }
+
+        .appointments-container h2 {
+            color: #ff6600;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background: #ff6600;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        table td {
+            font-size: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Upcoming Appointments</h1>
+        <p>View your upcoming appointments and details.</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="appointments-container">
+            <h2>Your Upcoming Appointments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Hospital Name</th>
+                        <th>Doctor Name</th>
+                        <th>Address</th>
+                        <th>Queue Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-09-20</td>
+                        <td>10:00 AM</td>
+                        <td>Health Center A</td>
+                        <td>Dr. Smith</td>
+                        <td>123 Health St, Wellness City</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>2024-09-25</td>
+                        <td>2:30 PM</td>
+                        <td>Wellness Clinic B</td>
+                        <td>Dr. Johnson</td>
+                        <td>456 Care Ave, Recovery Town</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-05</td>
+                        <td>11:15 AM</td>
+                        <td>Cure Hospital C</td>
+                        <td>Dr. Lee</td>
+                        <td>789 Cure Blvd, Healing County</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-12</td>
+                        <td>9:00 AM</td>
+                        <td>General Hospital D</td>
+                        <td>Dr. Brown</td>
+                        <td>101 Health Dr, Med City</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>2024-10-20</td>
+                        <td>1:30 PM</td>
+                        <td>Care Center E</td>
+                        <td>Dr. Wilson</td>
+                        <td>202 Wellness Ln, Health Town</td>
+                        <td>15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Patient Dashboard. All rights reserved.
+    </footer>
+
+</body>
+</html>

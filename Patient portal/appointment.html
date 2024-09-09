@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Appointment Booking</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            background: #ff6600;
+            color: #fff;
+            padding: 30px 20px;
+            border-bottom: 5px solid #e65500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        /* Appointment Section Styles */
+        .appointment-section {
+            background: #fff;
+            padding: 50px 20px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .appointment-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 102, 0, 0.1);
+            z-index: 0;
+            border-radius: 12px;
+        }
+
+        .appointment-section h2 {
+            color: #ff6600;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #333;
+            position: relative;
+            z-index: 1;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #ff6600;
+            box-shadow: 0 0 8px rgba(255, 102, 0, 0.5);
+            outline: none;
+        }
+
+        .check-button,
+        .book-button {
+            padding: 14px 24px;
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .check-button:hover,
+        .book-button:hover {
+            background: #e65500;
+            transform: scale(1.05);
+        }
+
+        .book-button {
+            margin-top: 10px;
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .popup-content h3 {
+            color: #ff6600;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .popup-content p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .close-button {
+            padding: 10px 20px;
+            background: #ff6600;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .close-button:hover {
+            background: #e65500;
+            transform: scale(1.05);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Hospital Name</h1>
+            <p>Specialization: Cardiology, Orthopedics, Neurology</p>
+        </div>
+    </header>
+
+    <!-- Appointment Booking Section -->
+    <main>
+        <section class="appointment-section">
+            <div class="container">
+                <h2>Book Your Appointment</h2>
+                <form id="appointmentForm">
+                    <label for="appointmentDate">Select Date:</label>
+                    <input type="date" id="appointmentDate" required>
+
+                    <label for="appointmentTime">Select Time:</label>
+                    <input type="time" id="appointmentTime" required>
+
+                    <button type="button" class="check-button" onclick="showPopup()">Check Registered Patients and Beds</button>
+                    <button type="submit" class="book-button"><a style="text-decoration: none; color: white;" href="payment.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book Appointment &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Popup Section -->
+    <div class="popup" id="patientPopup">
+        <div class="popup-content">
+            <h3>Beds and patients status    </h3>
+            <p>Number of registered patients: 42</p>
+            <p>Number of beds available currently: 189</p>
+            <button class="close-button" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the popup
+        function showPopup() {
+            document.getElementById('patientPopup').classList.add('active');
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('patientPopup').classList.remove('active');
+        }
+
+        // Handle form submission for booking an appointment
+        document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the selected date and time values
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            const appointmentTime = document.getElementById('appointmentTime').value;
+
+            // Simple confirmation message
+            alert(`Appointment booked on ${appointmentDate} at ${appointmentTime}.`);
+        });
+    </script>
+
+</body>
+</html>
