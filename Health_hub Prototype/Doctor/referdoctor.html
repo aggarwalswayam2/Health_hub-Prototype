@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer Patient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: black;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .header {
+            background-color: #ff6600;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-group button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .form-group button:hover {
+            background-color: #e65c00;
+        }
+        .doctor-list {
+            margin-top: 20px;
+        }
+        .doctor-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .doctor-list li {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .doctor-list button {
+            background-color: transparent;
+            color: #ff6600;
+            border: 2px solid #ff6600;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .doctor-list button:hover {
+            background-color: #ff6600;
+            color: white;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .popup button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .popup button:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Refer Patient to Another Doctor</h1>
+    </div>
+    <div class="container">
+        <div class="form-group">
+            <label for="patient-id">Patient ID:</label>
+            <input type="text" id="patient-id" name="patient-id" required>
+        </div>
+        <div class="form-group">
+            <label for="doctor-select">Select Referral Doctor:</label>
+            <select id="doctor-select">
+                <option value="Dr. Alice Smith">Dr. Alice Smith - Cardiologist</option>
+                <option value="Dr. Bob Johnson">Dr. Bob Johnson - Neurologist</option>
+                <option value="Dr. Charlie Brown">Dr. Charlie Brown - Orthopedic</option>
+                <option value="Dr. David Wilson">Dr. David Wilson - Dermatologist</option>
+                <option value="Dr. Emma Davis">Dr. Emma Davis - Pediatrician</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button onclick="referPatient()">Refer Patient</button>
+        </div>
+    </div>
+    <div class="popup" id="popup">
+        <p>Patient has been successfully referred to <span id="refer-doctor-name"></span>.</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <script>
+        function referPatient() {
+            const doctorName = document.getElementById('doctor-select').value;
+            document.getElementById('refer-doctor-name').textContent = doctorName;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

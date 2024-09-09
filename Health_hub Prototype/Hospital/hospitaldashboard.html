@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HOSPITAL PANEL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            position: relative;
+            height: 100vh; /* Ensure the body takes full viewport height */
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: calc(100% - 100px); /* Adjust height to make space for the button */
+            padding-bottom: 60px; /* Extra space at the bottom to make room for the fixed button */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+        }
+
+        .header h2 {
+            color: #666;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center; /* Center align the buttons */
+            flex-wrap: wrap;
+            margin-top: 20px; /* Adjust margin to shift buttons downwards */
+        }
+
+        .button {
+            background-color: #ff7f00;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #ff6300;
+        }
+
+        .button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .button a:hover {
+            text-decoration: underline;
+        }
+
+        .checkin-button, .discharge-button {
+            color: white;
+            position: fixed; /* Fixed positioning */
+            bottom: 20px; /* Space from the bottom */
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkin-button {
+            background-color: green; /* Set background color to green */
+            left: 40%; /* Adjust left positioning for better placement */
+            transform: translateX(-50%); /* Center horizontally */
+        }
+
+        .checkin-button:hover {
+            background-color: darkgreen; /* Darker green on hover */
+        }
+
+        .discharge-button {
+            background-color: red; /* Set background color to red */
+            left: 60%; /* Adjust left positioning for better placement */
+            transform: translateX(-50%); /* Center horizontally */
+        }
+
+        .discharge-button:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>HOSPITAL PANEL</h1>
+            <h2>Dashboard</h2>
+            <h2>HOSPITAL NAME</h2>
+        </div>
+        <div class="buttons-container">
+            <button class="button" onclick="window.location.href='managedoctors.html'"><b>Manage Doctors</b></button>
+            <button class="button" onclick="window.location.href='managesupplies.html'"><b>Manage Supplies</b></button>
+            <button class="button">
+                <a href="https://docs.google.com/spreadsheets/d/1nTHPubGEeoVlyoYq9OsTbQ_6773LFBm0iyqFucOb_ak/edit?usp=sharing">View Inventory Request</a>
+            </button>
+            <button class="button" onclick="window.location.href='bill.html'">Generate Bill.</button>
+            <button class="button">
+                <a href="https://docs.google.com/spreadsheets/d/1aDzTzuDPgz7MYlHMN9xETLC7vI1hFDW_Xtss4_Nerk0/edit?usp=sharing">Doctor Leave Request</a>
+            </button>
+            <button class="button">
+                <a href="https://forms.gle/pTBLBtykkgC8CRGJA">Add Patient</a>
+            </button>
+        </div>
+    </div>
+    <button class="checkin-button" onclick="window.location.href='checkin.html'">Patient Checkin</button>
+    <button class="discharge-button" onclick="window.location.href='discharge.html'">Patient Discharge</button>
+</body>
+</html>
